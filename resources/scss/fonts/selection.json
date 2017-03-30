@@ -1,0 +1,71 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M0 877.714l146.286 146.286 365.714-365.714 365.714 365.714 146.286-146.286-365.714-365.714 365.714-365.714-146.286-146.286-365.714 365.714-365.714-365.714-146.286 146.286 365.714 365.714-365.714 365.714z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "tags": [
+          "cancel33"
+        ],
+        "grid": 0
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 66,
+        "id": 7,
+        "prevSize": 32,
+        "code": 58886,
+        "name": "cancel33"
+      },
+      "setIdx": 2,
+      "setId": 2,
+      "iconIdx": 7
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icones-netshoes"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "ico-",
+      "metadata": {
+        "fontFamily": "icones-netshoes",
+        "majorVersion": 1,
+        "minorVersion": 0
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "showSelector": true,
+      "showMetrics": false,
+      "embed": false,
+      "resetPoint": 59648
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 4473924,
+      "bgColor": 16777215
+    },
+    "historySize": 100,
+    "showCodes": false,
+    "gridSize": 16,
+    "showGrid": false
+  }
+}

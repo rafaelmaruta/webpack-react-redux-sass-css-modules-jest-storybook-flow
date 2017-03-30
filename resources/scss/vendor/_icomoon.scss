@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'icones-netshoes';
+  src:  url('./fonts/icones-netshoes.eot?4ghas2');
+  src:  url('./fonts/icones-netshoes.eot?4ghas2#iefix') format('embedded-opentype'),
+    url('./fonts/icones-netshoes.ttf?4ghas2') format('truetype'),
+    url('./fonts/icones-netshoes.woff?4ghas2') format('woff'),
+    url('./fonts/icones-netshoes.svg?4ghas2#icones-netshoes') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="ico-"], [class*=" ico-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icones-netshoes' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
