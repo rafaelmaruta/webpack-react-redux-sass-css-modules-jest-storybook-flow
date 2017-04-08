@@ -38,7 +38,7 @@ module.exports = Object.keys(languages).map(language => ({
       }
     }),
     new HTMLWebpackPlugin({
-      basePath: '/',
+      //basePath: '/',
       template: Path.join(__dirname, '..', 'index.ejs')
     }),
     new SWPrecacheWebpackPlugin({
