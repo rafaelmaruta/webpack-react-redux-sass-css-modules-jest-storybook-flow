@@ -1,7 +1,6 @@
 const Config            = require('./common.config');
 const Path              = require('path');
 const Webpack           = require('webpack');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const I18nPlugin        = require("i18n-webpack-plugin");
 
 require('babel-core/register');
@@ -53,10 +52,6 @@ module.exports = Object.keys(languages).map(language => ({
       'process.env': {
         NODE_ENV : JSON.stringify('development')
       }
-    }),
-    new HTMLWebpackPlugin({
-      //basePath: '/',
-      template: Path.join(__dirname, '..', 'index.ejs')
     }),
     new Webpack.HotModuleReplacementPlugin(),
     ...Config.plugins

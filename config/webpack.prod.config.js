@@ -1,7 +1,6 @@
 const Config                  = require('./common.config');
 const Path                    = require('path');
 const Webpack                 = require('webpack');
-const HTMLWebpackPlugin       = require('html-webpack-plugin');
 const I18nPlugin              = require("i18n-webpack-plugin");
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 require("babel-core/register");
@@ -37,12 +36,8 @@ module.exports = Object.keys(languages).map(language => ({
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new HTMLWebpackPlugin({
-      //basePath: '/',
-      template: Path.join(__dirname, '..', 'index.ejs')
-    }),
     new SWPrecacheWebpackPlugin({
-      cacheId: 'dashboard',
+      cacheId: 'boilerplate',
       filename: 'service-worker.js',
       //replacePrefix: 'http://localhost:3000/',
       stripPrefix: Config.bundlePath,

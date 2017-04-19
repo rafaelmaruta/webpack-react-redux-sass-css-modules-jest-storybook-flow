@@ -1,5 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const Path              = require('path');
+const Webpack           = require('webpack');
 
 const Pj = Path.join;
 const Config = {};
@@ -32,7 +34,7 @@ Config.aliases = Object.assign({
   Reducers  : crep,
   RootRoute : crop,
   Store     : cstp,
-  
+
   ActionTypes : Pj(cap, 'ActionTypes'),
   ProductsCart: Pj(crep, 'ProductsCart'),
   Main        : Pj(crop, 'Main'),
@@ -98,6 +100,13 @@ Config.plugins = [
     filename: 'index.css',
     disable: process.env.NODE_ENV === 'development',
     allChunks: true
+  }),
+  new HTMLWebpackPlugin({
+    //basePath: '/',
+    template: Path.join(__dirname, '..', 'index.ejs')
+  }),
+  new Webpack.ProvidePlugin({
+    Base: 'Base'
   })
 ];
 

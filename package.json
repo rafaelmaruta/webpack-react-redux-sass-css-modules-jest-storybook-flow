@@ -64,6 +64,7 @@
   "semistandard": {
     "globals": [
       "$",
+      "Base",
       "localStorage"
     ]
   }
