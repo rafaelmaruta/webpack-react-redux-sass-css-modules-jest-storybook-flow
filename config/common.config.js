@@ -1,5 +1,4 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const Path              = require('path');
 const Webpack           = require('webpack');
 
@@ -100,10 +99,6 @@ Config.plugins = [
     filename: 'index.css',
     disable: process.env.NODE_ENV === 'development',
     allChunks: true
-  }),
-  new HTMLWebpackPlugin({
-    //basePath: '/',
-    template: Path.join(__dirname, '..', 'index.ejs')
   }),
   new Webpack.ProvidePlugin({
     Base: 'Base'
