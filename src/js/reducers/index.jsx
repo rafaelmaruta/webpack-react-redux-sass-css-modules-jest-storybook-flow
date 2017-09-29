@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import ProductsCart from 'ProductsCart';
+import ProductsCart from 'Reducers/ProductsCart';
 
 const Reducers = combineReducers({ProductsCart});
 

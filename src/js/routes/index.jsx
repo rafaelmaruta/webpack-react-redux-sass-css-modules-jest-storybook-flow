@@ -14,7 +14,7 @@ const RootRoute = {
     {
       path: '/',
       getComponent (location, cb) {
-        System.import('Main')
+        System.import('RootRoute/Main')
         .then(loadRoute(cb))
         .catch(errorLoading);
       }
@@ -22,7 +22,7 @@ const RootRoute = {
     {
       path: '/:param',
       getComponent (location, cb) {
-        System.import('Main')
+        System.import('RootRoute/Main')
         .then(loadRoute(cb))
         .catch(errorLoading);
       }

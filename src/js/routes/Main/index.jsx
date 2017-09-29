@@ -1,20 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import AppConfig from 'AppConfig';
-import CSSModules from 'react-css-modules';
-import styles from './Main.scss';
+import './Main.scss';
 
-@CSSModules(styles)
 class Main extends Component {
-
-  constructor (props) {
-    super(props);
-  }
-
   render () {
+    console.log(AppConfig);
     return (
       <div className='row center-xs'>
-        <div styleName='container' />
+        <div styleName='container'>
+          Hello World
+        </div>
       </div>
     );
   }

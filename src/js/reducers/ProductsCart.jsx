@@ -1,4 +1,4 @@
-import * as ActionTypes from 'ActionTypes';
+import * as ActionTypes from 'Actions/ActionTypes';
 import {List} from 'immutable';
 
 const initialState = {

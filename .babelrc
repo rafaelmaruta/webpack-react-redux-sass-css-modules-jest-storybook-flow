@@ -1,12 +1,41 @@
 {
-  presets: [
-    ['es2015', { modules: false }],
-    'react',
-    'stage-0'
+  "presets": [
+    "env",
+    "stage-0",
+    "react"
   ],
-  plugins: [
-    'transform-decorators-legacy',
-    'transform-class-properties',
-    'react-hot-loader/babel'
+  "plugins": [
+    "transform-class-properties",
+    "react-hot-loader/babel",
+    "transform-decorators-legacy",
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true
+    }],
+    ["import", {
+      "libraryName": "antd",
+      "style": "css"
+    }],
+    ["module-resolver", {
+      "root": ["./src/js"],
+      "alias": {
+        "MasterPage": "structure",
+        "Actions": "actions",
+        "Reducers": "reducers",
+        "RootRoute": "routes",
+        "Store": "store"
+      }
+    }],
+    ["react-css-modules", {
+      "context": "./src",
+      "generateScopedName": "[local]-[hash:base64:5]",
+      "filetypes": {
+        ".scss": {
+          "syntax": "postcss-scss"
+        }
+      },
+      "webpackHotModuleReloading": true
+    }]
   ]
 }
