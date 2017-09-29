@@ -2,7 +2,8 @@ import * as ActionTypes from 'Actions/ActionTypes';
 import {List} from 'immutable';
 
 const initialState = {
-  productsList: List(JSON.parse(localStorage.getItem('productsCart'))) || List()
+  // productsList: List(JSON.parse(localStorage.getItem('productsCart'))) || List() USAR REDUX PERSISTS EM VEZ DISSO
+  productsList: []
 };
 
 const ProductsCart = function (state = initialState, action) {
