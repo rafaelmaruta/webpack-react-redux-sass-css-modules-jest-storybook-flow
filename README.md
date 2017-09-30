@@ -15,7 +15,7 @@ Você deve instalar em seu PC:
 Instale todas essas dependências globais através do terminal:
 
 ```cmd
-npm i -g babel-eslint@7.2.3 cross-env@5.0.0 identity-obj-proxy@3.0.0 jest@20.0.4 semi-standard@0.0.4 webpack@3.5.3 webpack-dev-server@2.7.1 yarn@0.27.5
+npm i -g babel-eslint@7.2.3 cross-env@5.0.0 identity-obj-proxy@3.0.0 jest@20.0.4 semistandard@11.0.0 webpack@3.5.3 webpack-dev-server@2.7.1 yarn@0.27.5
 ```
 
 ### Clonar repositório
