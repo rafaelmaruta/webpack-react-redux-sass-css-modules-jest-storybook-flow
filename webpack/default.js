@@ -154,6 +154,7 @@ module.exports = {
         {
           loader: 'sass-loader',
           options: {
+            data: '@import "' + paths.importEach + '";',
             sourceMap: true,
             includePaths: [ resolve(paths.src) ]
           }

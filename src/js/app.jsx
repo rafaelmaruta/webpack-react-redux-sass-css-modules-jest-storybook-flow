@@ -5,7 +5,7 @@ import {render} from 'react-dom';
 import {Router, browserHistory} from 'react-router';
 import RootRoute from 'RootRoute';
 import Store from 'Store';
-import '../scss/main.scss';
+import '../scss/_import-once.scss';
 
 const renderApp = NextApp => {
   render(

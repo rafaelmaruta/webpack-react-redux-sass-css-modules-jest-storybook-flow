@@ -1,0 +1,48 @@
+@each $font in $fonts {
+    @font-face {
+      font-family: $font;
+      src:
+      url("#{$fonts-path + $font}.eot?#iefix") format("embedded-opentype"),
+      url("#{$fonts-path + $font}.woff") format("woff"),
+      url("#{$fonts-path + $font}.ttf")  format("truetype"),
+      url("#{$fonts-path + $font}.svg##{$font}") format("svg");
+      font-weight: normal;
+      font-style: normal;
+    }
+  }
+  
+  .super {
+    font: $font-size6 $font-family-default;
+  }
+  
+  h1 {
+    font: $font-size5 $font-family-bold;
+  }
+  
+  h2 {
+    font: $font-size4 $font-family-bold;
+  }
+  
+  h3 {
+    font: $font-size4 $font-family-default;
+  }
+  
+  h4 {
+    font: $font-size3 $font-family-bold;
+  }
+  
+  h5 {
+    font: $font-size3 $font-family-default;
+  }
+  
+  h6 {
+    font: $font-size2 $font-family-semibold;
+  }
+  
+  p {
+    font: $font-size-default $font-family-default;
+  }
+  
+  small {
+    font: $font-size1 $font-family-default;
+  }
