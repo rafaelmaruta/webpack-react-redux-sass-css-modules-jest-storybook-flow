@@ -5,7 +5,7 @@ import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import Main from './'
 import React from 'react'
-import Store from 'Store';
+import Store from 'Store'
 
 chai.use(chaiEnzyme())
 
@@ -15,15 +15,14 @@ const main = (
   <Main store={Store} />
 )
 
-const wrapper = shallow(main);
+const wrapper = shallow(main)
 
 describe('Main should:', () => {
-
-  it('match shapshot', () => { jExpect(wrapper).toMatchSnapshot(); })
+  it('match shapshot', () => { jExpect(wrapper).toMatchSnapshot() })
 
   describe('sum', () => {
     it('1 + 1 = 2', () => {
-      expect(1 + 1).to.be.equal(2);
+      expect(1 + 1).to.be.equal(2)
     })
   })
 })

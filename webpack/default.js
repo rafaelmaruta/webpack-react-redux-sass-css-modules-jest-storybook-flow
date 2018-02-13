@@ -2,53 +2,54 @@
 
 const { join, resolve } = require('path')
 const Aliases = require('./aliases')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlPlugin = require('html-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const HtmlPlugin = require('html-webpack-plugin')
 const Webpack = require('webpack')
 
 const paths = {
   dist: join(__dirname, '..', 'build'),
   public: join(__dirname, '..', 'public'),
   root: join(__dirname, '..'),
-  src: join(__dirname, '..', 'src')
+  src: join(__dirname, '..', 'src'),
+  importEach: '../src/scss/_import-each'
 }
 
 const pluginsList = {
-  commonChunkPlugin: [
-    new Webpack.optimize.CommonsChunkPlugin({
-      name: 'view',
-      chunks: ['main'],
-      minChunks: ({ resource }) => (
-        /node_modules\/(react(-dom)?|fbjs)\//.test(resource)
-      )
-    }),
+  // commonChunkPlugin: [
+  //   new Webpack.optimize.CommonsChunkPlugin({
+  //     name: 'view',
+  //     chunks: ['main'],
+  //     minChunks: ({ resource }) => (
+  //       /node_modules\/(react(-dom)?|fbjs)\//.test(resource)
+  //     )
+  //   }),
 
-    new Webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      chunks: ['main'],
-      minChunks: ({ resource }) => (
-        /node_modules/.test(resource)
-      )
-    })
-  ],
+  //   new Webpack.optimize.CommonsChunkPlugin({
+  //     name: 'vendor',
+  //     chunks: ['main'],
+  //     minChunks: ({ resource }) => (
+  //       /node_modules/.test(resource)
+  //     )
+  //   })
+  // ],
 
-  extractTextPlugin: new ExtractTextPlugin({
-    filename: '[name]-[chunkhash:8].css',
-    disable: process.env.NODE_ENV === 'development',
-    allChunks: true
-  }),
+  // extractTextPlugin: new ExtractTextPlugin({
+  //   filename: '[name]-[chunkhash:8].css',
+  //   disable: process.env.NODE_ENV === 'development',
+  //   allChunks: true
+  // }),
 
-  htmlPlugin: new HtmlPlugin({
-    chunksSortMode: (chunk1, chunk2) => {
-      const order = ['view', 'vendor', 'main']
-      const left = order.indexOf(chunk1.names[0])
-      const right = order.indexOf(chunk2.names[0])
-      return left - right
-    },
-    minify: { collapseWhitespace: true },
-    template: join(paths.src, 'index.ejs'),
-    title: 'Store'
-  }),
+  // htmlPlugin: new HtmlPlugin({
+  //   chunksSortMode: (chunk1, chunk2) => {
+  //     const order = ['view', 'vendor', 'main']
+  //     const left = order.indexOf(chunk1.names[0])
+  //     const right = order.indexOf(chunk2.names[0])
+  //     return left - right
+  //   },
+  //   minify: { collapseWhitespace: true },
+  //   template: join(paths.src, 'index.ejs'),
+  //   title: 'Store'
+  // }),
 
   moduleConcatenationPlugin: new Webpack.optimize.ModuleConcatenationPlugin()
 }
@@ -73,7 +74,7 @@ module.exports = {
     include: paths.src,
     exclude: /node_modules/,
     use: {
-      loader: 'semistandard-loader',
+      loader: 'standard-loader',
       options: {
         parser: 'babel-eslint'
       }
@@ -129,38 +130,60 @@ module.exports = {
 
   cssLoader: {
     test: /\.css$/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: 'css-loader'
-    })
+    use: ['style-loader', 'css-loader']
+    // use: ExtractTextPlugin.extract({
+    //   fallback: 'style-loader',
+    //   use: 'css-loader'
+    // })
   },
 
   scssLoader: {
     test: /\.scss$/,
     exclude: /node_modules/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-            localIdentName: '[local]-[hash:base64:5]',
-            minimize: true,
-            modules: true,
-            sourceMap: true
-          }
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            data: '@import "' + paths.importEach + '";',
-            sourceMap: true,
-            includePaths: [ resolve(paths.src) ]
-          }
-        }
-      ]
-    })
+    use: [{
+      loader: 'style-loader'
+    },
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1,
+        localIdentName: '[local]-[hash:base64:5]',
+        minimize: true,
+        modules: true,
+        sourceMap: true
+      }
+    },
+    {
+      loader: 'sass-loader',
+      options: {
+        data: '@import "' + paths.importEach + '";',
+        sourceMap: true,
+        includePaths: [ resolve(paths.src) ]
+      }
+    }]
+    // use: ExtractTextPlugin.extract({
+    //   fallback: 'style-loader',
+    //   use: [
+    //     {
+    //       loader: 'css-loader',
+    //       options: {
+    //         importLoaders: 1,
+    //         localIdentName: '[local]-[hash:base64:5]',
+    //         minimize: true,
+    //         modules: true,
+    //         sourceMap: true
+    //       }
+    //     },
+    //     {
+    //       loader: 'sass-loader',
+    //       options: {
+    //         data: '@import "' + paths.importEach + '";',
+    //         sourceMap: true,
+    //         includePaths: [ resolve(paths.src) ]
+    //       }
+    //     }
+    //   ]
+    // })
   },
 
   fileLoader: {
@@ -189,9 +212,9 @@ module.exports = {
   },
 
   plugins: [
-    ...pluginsList.commonChunkPlugin,
-    pluginsList.extractTextPlugin,
-    pluginsList.htmlPlugin,
+    // ...pluginsList.commonChunkPlugin,
+    // pluginsList.extractTextPlugin,
+    // pluginsList.htmlPlugin,
     pluginsList.moduleConcatenationPlugin
   ]
 }

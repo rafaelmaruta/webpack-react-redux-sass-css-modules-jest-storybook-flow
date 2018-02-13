@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch'
 
 async function GetProducts (url) {
   return new Promise((resolve, reject) => {
@@ -9,16 +9,16 @@ async function GetProducts (url) {
         reject({
           'message': 'Deu erro',
           response
-        });
+        })
       }
-      return response.json();
+      return response.json()
     }).then(response => {
       resolve({
         message: 'Consulta feita com sucesso',
         response
-      });
-    });
-  });
+      })
+    })
+  })
 }
 
-export default GetProducts;
+export default GetProducts

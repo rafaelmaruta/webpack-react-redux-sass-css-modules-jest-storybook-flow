@@ -1,11 +1,11 @@
-import MasterPage from 'MasterPage';
+import MasterPage from 'MasterPage'
 
 function errorLoading (err) {
-  console.error('Dynamic page loading failed', err);
+  console.error('Dynamic page loading failed', err)
 }
 
 function loadRoute (cb) {
-  return (module) => cb(null, module.default);
+  return (module) => cb(null, module.default)
 }
 
 const RootRoute = {
@@ -15,19 +15,19 @@ const RootRoute = {
       path: '/',
       getComponent (location, cb) {
         System.import('RootRoute/Main')
-        .then(loadRoute(cb))
-        .catch(errorLoading);
+          .then(loadRoute(cb))
+          .catch(errorLoading)
       }
     },
     {
       path: '/:param',
       getComponent (location, cb) {
         System.import('RootRoute/Main')
-        .then(loadRoute(cb))
-        .catch(errorLoading);
+          .then(loadRoute(cb))
+          .catch(errorLoading)
       }
     }
   ]
-};
+}
 
-export default RootRoute;
+export default RootRoute

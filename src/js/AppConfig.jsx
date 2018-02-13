@@ -3,6 +3,6 @@ const AppConfig = {
   dirContent: 'img/', // Diretório das fotos
   productsAPI: 'data/products.json', // URL dos dados JSON dos produtos
   urlSubmit: '/' // URL enviada após o envio do submit do carrinh
-};
+}
 
-export default AppConfig;
+export default AppConfig
