@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import AppConfig from 'AppConfig'
 import './_styles.scss'
 
 class Main extends Component {
   render () {
-    console.log(AppConfig)
+    const teste = {}
+
+    console.log(teste.teste?.teste?.teste?.teste)
+
     return (
       <div className='row center-xs'>
         <div styleName='container'>

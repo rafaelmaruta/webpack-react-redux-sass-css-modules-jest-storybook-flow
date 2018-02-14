@@ -2,8 +2,8 @@
 
 const { join, resolve } = require('path')
 const Aliases = require('./aliases')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
-// const HtmlPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin')
 const Webpack = require('webpack')
 
 const paths = {
@@ -33,23 +33,23 @@ const pluginsList = {
   //   })
   // ],
 
-  // extractTextPlugin: new ExtractTextPlugin({
-  //   filename: '[name]-[chunkhash:8].css',
-  //   disable: process.env.NODE_ENV === 'development',
-  //   allChunks: true
-  // }),
+  extractTextPlugin: new ExtractTextPlugin({
+    filename: '[name]-[chunkhash:8].css',
+    disable: process.env.NODE_ENV === 'development',
+    allChunks: true
+  }),
 
-  // htmlPlugin: new HtmlPlugin({
-  //   chunksSortMode: (chunk1, chunk2) => {
-  //     const order = ['view', 'vendor', 'main']
-  //     const left = order.indexOf(chunk1.names[0])
-  //     const right = order.indexOf(chunk2.names[0])
-  //     return left - right
-  //   },
-  //   minify: { collapseWhitespace: true },
-  //   template: join(paths.src, 'index.ejs'),
-  //   title: 'Store'
-  // }),
+  htmlPlugin: new HtmlPlugin({
+    chunksSortMode: (chunk1, chunk2) => {
+      const order = ['view', 'vendor', 'main']
+      const left = order.indexOf(chunk1.names[0])
+      const right = order.indexOf(chunk2.names[0])
+      return left - right
+    },
+    minify: { collapseWhitespace: true },
+    template: join(paths.src, 'index.ejs'),
+    title: 'Store'
+  }),
 
   moduleConcatenationPlugin: new Webpack.optimize.ModuleConcatenationPlugin()
 }
@@ -59,7 +59,7 @@ module.exports = {
   pluginsList,
 
   entry: {
-    main: join(paths.src, 'js', 'app')
+    main: join(paths.src, 'js', 'index')
   },
 
   resolve: {
@@ -89,16 +89,22 @@ module.exports = {
       loader: 'babel-loader',
       options: {
         presets: [
-          ['env', { modules: false }],
-          'stage-0',
-          'react',
-          'flow'
+          ['@babel/preset-env', {
+            modules: false,
+            targets: {
+              browsers: ['last 2 versions']
+            }
+          }],
+          '@babel/stage-0',
+          '@babel/preset-react',
+          '@babel/preset-flow'
         ],
         plugins: [
-          'transform-class-properties',
           'react-hot-loader/babel',
-          'transform-decorators-legacy',
-          ['transform-runtime', {
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-proposal-optional-chaining',
+          '@babel/plugin-proposal-pipeline-operator',
+          ['@babel/plugin-transform-runtime', {
             helpers: false,
             polyfill: false,
             regenerator: true
@@ -106,11 +112,11 @@ module.exports = {
           ['module-resolver', {
             root: ['./src/js'],
             alias: {
-              MasterPage: 'structure',
-              Actions: 'actions',
-              Reducers: 'reducers',
-              RootRoute: 'routes',
-              Store: 'store'
+              MasterPage: './src/js/structure',
+              Actions: './src/js/actions',
+              Reducers: './src/js/reducers',
+              RootRoute: './src/js/routes',
+              Store: './src/js/store'
             }
           }],
           ['react-css-modules', {
@@ -130,60 +136,60 @@ module.exports = {
 
   cssLoader: {
     test: /\.css$/,
-    use: ['style-loader', 'css-loader']
-    // use: ExtractTextPlugin.extract({
-    //   fallback: 'style-loader',
-    //   use: 'css-loader'
-    // })
+    // use: ['style-loader', 'css-loader']
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: 'css-loader'
+    })
   },
 
   scssLoader: {
     test: /\.scss$/,
     exclude: /node_modules/,
-    use: [{
-      loader: 'style-loader'
-    },
-    {
-      loader: 'css-loader',
-      options: {
-        importLoaders: 1,
-        localIdentName: '[local]-[hash:base64:5]',
-        minimize: true,
-        modules: true,
-        sourceMap: true
-      }
-    },
-    {
-      loader: 'sass-loader',
-      options: {
-        data: '@import "' + paths.importEach + '";',
-        sourceMap: true,
-        includePaths: [ resolve(paths.src) ]
-      }
-    }]
-    // use: ExtractTextPlugin.extract({
-    //   fallback: 'style-loader',
-    //   use: [
-    //     {
-    //       loader: 'css-loader',
-    //       options: {
-    //         importLoaders: 1,
-    //         localIdentName: '[local]-[hash:base64:5]',
-    //         minimize: true,
-    //         modules: true,
-    //         sourceMap: true
-    //       }
-    //     },
-    //     {
-    //       loader: 'sass-loader',
-    //       options: {
-    //         data: '@import "' + paths.importEach + '";',
-    //         sourceMap: true,
-    //         includePaths: [ resolve(paths.src) ]
-    //       }
-    //     }
-    //   ]
-    // })
+    // use: [{
+    //   loader: 'style-loader'
+    // },
+    // {
+    //   loader: 'css-loader',
+    //   options: {
+    //     importLoaders: 1,
+    //     localIdentName: '[local]-[hash:base64:5]',
+    //     minimize: true,
+    //     modules: true,
+    //     sourceMap: true
+    //   }
+    // },
+    // {
+    //   loader: 'sass-loader',
+    //   options: {
+    //     data: '@import "' + paths.importEach + '";',
+    //     sourceMap: true,
+    //     includePaths: [ resolve(paths.src) ]
+    //   }
+    // }]
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            localIdentName: '[local]-[hash:base64:5]',
+            minimize: true,
+            modules: true,
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            data: '@import "' + paths.importEach + '";',
+            sourceMap: true,
+            includePaths: [ resolve(paths.src) ]
+          }
+        }
+      ]
+    })
   },
 
   fileLoader: {
@@ -213,8 +219,8 @@ module.exports = {
 
   plugins: [
     // ...pluginsList.commonChunkPlugin,
-    // pluginsList.extractTextPlugin,
-    // pluginsList.htmlPlugin,
+    pluginsList.extractTextPlugin,
+    pluginsList.htmlPlugin,
     pluginsList.moduleConcatenationPlugin
   ]
 }

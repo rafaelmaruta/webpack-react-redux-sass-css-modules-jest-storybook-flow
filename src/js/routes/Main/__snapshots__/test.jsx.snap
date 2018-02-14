@@ -2,128 +2,48 @@
 
 exports[`Main should: match shapshot 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <Main
-    dispatch={[Function]}
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(Main)
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
-    }
-    storeSubscription={
-        Subscription {
-            "listeners": Object {
-              "notify": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-            "unsubscribe": null,
-          }
-    }
-/>,
-  "nodes": Array [
-    <Main
-      dispatch={[Function]}
-      store={
-            Object {
-                  "dispatch": [Function],
-                  "getState": [Function],
-                  "replaceReducer": [Function],
-                  "subscribe": [Function],
-                  Symbol(observable): [Function],
-                }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
       }
-      storeSubscription={
-            Subscription {
-                  "listeners": Object {
-                    "notify": [Function],
-                  },
-                  "onStateChange": [Function],
-                  "parentSub": undefined,
-                  "store": Object {
-                    "dispatch": [Function],
-                    "getState": [Function],
-                    "replaceReducer": [Function],
-                    "subscribe": [Function],
-                    Symbol(observable): [Function],
-                  },
-                  "unsubscribe": null,
-                }
-      }
-/>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <Connect(Main)
-        store={
-                Object {
-                        "dispatch": [Function],
-                        "getState": [Function],
-                        "replaceReducer": [Function],
-                        "subscribe": [Function],
-                        Symbol(observable): [Function],
-                      }
-        }
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Connect {
-        "_reactInternalInstance": [Circular],
-        "context": Object {
-          "store": undefined,
-          "storeSubscription": undefined,
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "dispatch": [Function],
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
         },
-        "notifyNestedSubs": [Function],
-        "props": Object {
-          "store": Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          },
-        },
-        "propsMode": true,
-        "refs": Object {},
-        "renderCount": 0,
-        "selector": Object {
-          "error": null,
-          "props": Object {
-            "dispatch": [Function],
-            "store": Object {
-              "dispatch": [Function],
-              "getState": [Function],
-              "replaceReducer": [Function],
-              "subscribe": [Function],
-              Symbol(observable): [Function],
-            },
-          },
-          "run": [Function],
-          "shouldComponentUpdate": false,
-        },
-        "setWrappedInstance": [Function],
-        "state": Object {},
+        "onStateChange": [Function],
+        "parentSub": undefined,
         "store": Object {
           "dispatch": [Function],
           "getState": [Function],
@@ -131,9 +51,33 @@ ShallowWrapper {
           "subscribe": [Function],
           Symbol(observable): [Function],
         },
-        "subscription": Subscription {
+        "unsubscribe": [Function],
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "dispatch": [Function],
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "storeSubscription": Subscription {
           "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
             "notify": [Function],
+            "subscribe": [Function],
           },
           "onStateChange": [Function],
           "parentSub": undefined,
@@ -144,107 +88,20 @@ ShallowWrapper {
             "subscribe": [Function],
             Symbol(observable): [Function],
           },
-          "unsubscribe": null,
+          "unsubscribe": [Function],
         },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-        "version": 0,
       },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <Main
-          dispatch={[Function]}
-          store={
-                    Object {
-                              "dispatch": [Function],
-                              "getState": [Function],
-                              "replaceReducer": [Function],
-                              "subscribe": [Function],
-                              Symbol(observable): [Function],
-                            }
-          }
-          storeSubscription={
-                    Subscription {
-                              "listeners": Object {
-                                "notify": [Function],
-                              },
-                              "onStateChange": [Function],
-                              "parentSub": undefined,
-                              "store": Object {
-                                "dispatch": [Function],
-                                "getState": [Function],
-                                "replaceReducer": [Function],
-                                "subscribe": [Function],
-                                Symbol(observable): [Function],
-                              },
-                              "unsubscribe": null,
-                            }
-          }
-/>,
-        "_debugID": 2,
-        "_renderedOutput": <Main
-          dispatch={[Function]}
-          store={
-                    Object {
-                              "dispatch": [Function],
-                              "getState": [Function],
-                              "replaceReducer": [Function],
-                              "subscribe": [Function],
-                              Symbol(observable): [Function],
-                            }
-          }
-          storeSubscription={
-                    Subscription {
-                              "listeners": Object {
-                                "notify": [Function],
-                              },
-                              "onStateChange": [Function],
-                              "parentSub": undefined,
-                              "store": Object {
-                                "dispatch": [Function],
-                                "getState": [Function],
-                                "replaceReducer": [Function],
-                                "subscribe": [Function],
-                                Symbol(observable): [Function],
-                              },
-                              "unsubscribe": null,
-                            }
-          }
-/>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
     },
-    "getRenderOutput": [Function],
-    "render": [Function],
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
   },
-  "root": [Circular],
-  "unrendered": <Connect(Main)
-    store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(observable): [Function],
-          }
-    }
-/>,
 }
 `;

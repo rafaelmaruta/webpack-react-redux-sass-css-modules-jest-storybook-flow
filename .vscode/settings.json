@@ -1,0 +1,32 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "standard.options": {
+    "files.associations": {
+      "*.jsx": "html",
+      "*.jsx?": "flow"
+    },
+    "globals": [
+      "afterEach",
+      "beforeEach",
+      "describe",
+      "expect",
+      "FileReader",
+      "it",
+      "localStorage",
+      "jest",
+      "moment",
+      "sessionStorage",
+      "spyOn"
+    ],
+    "ignore": [
+      "node_modules/**"
+    ],
+    "parser": "babel-eslint",
+    "plugins": ["html"],
+    "standard.validate": [
+      "javascript",
+      "javascriptreact",
+      "html"
+    ]
+  }
+}
