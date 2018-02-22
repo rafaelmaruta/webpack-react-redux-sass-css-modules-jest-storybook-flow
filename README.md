@@ -29,7 +29,7 @@ git clone https://github.com/rafaelmaruta/webpack-react-redux-sass-css-modules-j
 
 ### Instale o projeto
 
-Vá para a pasta `/webpack-boilerplate-react-graphql-ssr-css-in-js` e rode `yarn` no terminal
+Vá para a pasta `/webpack-react-redux-sass-css-modules-jest-storybook-flow` e rode `yarn` no terminal
 
 ## Como rodar o projeto
 
