@@ -1,5 +1,4 @@
 // Retorna o maior parcelamento
-const getGreaterInstallment = products => Math.max.apply(Math, products.map(item => item.installments))
 
 const FormatPrice = {
   // Splita o número fracionário
@@ -32,4 +31,4 @@ const ToSeo = function (str) {
   return newStr.toLowerCase().replace(/ /g, '-')
 }
 
-export {CalcTotal, FormatPrice, GetQuantity, ReduceCart, SetQuantity, ToSeo}
+export {FormatPrice, ToSeo}

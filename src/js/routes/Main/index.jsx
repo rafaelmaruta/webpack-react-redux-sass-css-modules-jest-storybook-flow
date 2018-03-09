@@ -4,10 +4,6 @@ import './_styles.scss'
 
 class Main extends Component {
   render () {
-    const teste = {}
-
-    console.log(teste.teste?.teste?.teste?.teste)
-
     return (
       <div className='row center-xs'>
         <div styleName='container'>

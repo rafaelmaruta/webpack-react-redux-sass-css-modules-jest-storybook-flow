@@ -16,7 +16,8 @@
       "jest",
       "moment",
       "sessionStorage",
-      "spyOn"
+      "spyOn",
+      "System"
     ],
     "ignore": [
       "node_modules/**"
