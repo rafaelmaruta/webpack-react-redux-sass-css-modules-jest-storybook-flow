@@ -21,30 +21,29 @@ module.exports = {
     contentBase: Default.paths.public,
     historyApiFallback: true,
     hot: true,
-    port: 8080,
+    port: 3001,
     stats: { colors: true }
   },
 
   devtool: 'source-map',
+
+  mode: 'development',
 
   module: {
     rules: [
       Default.preLoader,
       Default.jsLoader,
       Default.scssLoader,
-      Default.cssLoader,
       Default.fileLoader,
       Default.urlLoader
     ]
   },
 
+  optimization: Default.optimization,
+
   plugins: [
-    new Webpack.EnvironmentPlugin({
-      NODE_ENV: 'development'
-    }),
-
+    Default.pluginsList.environmentPlugin('development'),
     new Webpack.HotModuleReplacementPlugin(),
-
     ...Default.plugins
   ],
 

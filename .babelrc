@@ -1,40 +1,48 @@
 {
   "presets": [
     ["@babel/preset-env", {
+      "modules": false,
       "targets": {
         "browsers": ["last 2 versions"]
       }
     }],
-    "@babel/stage-0",
     "@babel/preset-react",
     "@babel/preset-flow"
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-optional-chaining",
-    "@babel/plugin-proposal-pipeline-operator",
+    ["@babel/plugin-proposal-class-properties", {
+      "loose": false
+    }],
+    ["@babel/plugin-proposal-decorators", {
+      "legacy": true }
+    ],
+    "@babel/plugin-proposal-function-bind",
+    ["@babel/plugin-proposal-optional-chaining", {
+      "loose": false
+    }],
+    ["@babel/plugin-proposal-pipeline-operator", {
+      "proposal": "minimal"
+    }],
+    "@babel/plugin-syntax-dynamic-import",
     ["@babel/plugin-transform-runtime", {
       "helpers": false,
-      "polyfill": false,
       "regenerator": true
-    }],
-    ["import", {
-      "libraryName": "antd",
-      "style": "css"
     }],
     ["module-resolver", {
       "root": ["./src/js"],
       "alias": {
-        "MasterPage": "./src/js/structure",
-        "Actions": "./src/js/actions",
+        "App": "./src/js",
+        "Helpers": "./src/js/helpers",
+        "Masterpage": "./src/js/masterpage",
+        "Modules": "./src/js/modules",
         "Reducers": "./src/js/reducers",
-        "RootRoute": "./src/js/routes",
+        "Routes": "./src/js/routes",
         "Store": "./src/js/store"
       }
     }],
     ["react-css-modules", {
-      "context": "./resources",
+      "context": "./src",
       "generateScopedName": "[local]-[hash:base64:5]",
       "filetypes": {
         ".scss": {

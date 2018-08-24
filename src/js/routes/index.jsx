@@ -1,33 +1,23 @@
-import MasterPage from 'MasterPage'
+import React from 'react'
+import { asyncComponent } from 'react-async-component'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
-function errorLoading (err) {
-  console.error('Dynamic page loading failed', err)
+export const doImport = (moduleImported) => {
+  return asyncComponent({
+    resolve: () => moduleImported
+  })
 }
 
-function loadRoute (cb) {
-  return (module) => cb(null, module.default)
-}
+const Routes = ({ history }) => (
+  <Switch>
+    <Route
+      exact
+      component={doImport(import(/*
+        webpackChunkName: "home"
+      */ 'Modules/home'), history)}
+      path='/'
+    />
+  </Switch>
+)
 
-const RootRoute = {
-  component: MasterPage,
-  childRoutes: [
-    {
-      path: '/',
-      getComponent (location, cb) {
-        System.import('RootRoute/Main')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
-    },
-    {
-      path: '/:param',
-      getComponent (location, cb) {
-        System.import('RootRoute/Main')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
-    }
-  ]
-}
-
-export default RootRoute
+export default withRouter(Routes)

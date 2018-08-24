@@ -1,8 +1,6 @@
-import * as ActionTypes from 'Actions/ActionTypes'
-// import {List} from 'immutable'
+import * as ActionTypes from 'Reducers/actions/ActionTypes'
 
 const initialState = {
-  // productsList: List(JSON.parse(localStorage.getItem('productsCart'))) || List() USAR REDUX PERSISTS EM VEZ DISSO
   productsList: []
 }
 

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import './_styles.scss'
 
-class Main extends Component {
+class Home extends Component {
   render () {
     return (
       <div className='row center-xs'>
@@ -18,4 +18,4 @@ const mapStateToProps = function (store) {
   return {}
 }
 
-export default connect(mapStateToProps)(Main)
+export default connect(mapStateToProps)(Home)

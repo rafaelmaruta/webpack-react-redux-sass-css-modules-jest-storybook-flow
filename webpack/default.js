@@ -2,9 +2,13 @@
 
 const { join, resolve } = require('path')
 const Aliases = require('./aliases')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const SassLintPlugin = require('sasslint-webpack-plugin')
 const Webpack = require('webpack')
+
+const devMode = process.env.NODE_ENV !== 'production'
 
 const paths = {
   dist: join(__dirname, '..', 'build'),
@@ -15,43 +19,32 @@ const paths = {
 }
 
 const pluginsList = {
-  // commonChunkPlugin: [
-  //   new Webpack.optimize.CommonsChunkPlugin({
-  //     name: 'view',
-  //     chunks: ['main'],
-  //     minChunks: ({ resource }) => (
-  //       /node_modules\/(react(-dom)?|fbjs)\//.test(resource)
-  //     )
-  //   }),
+  environmentPlugin: (environment) => (
+    new Webpack.EnvironmentPlugin({
+      NODE_ENV: environment
+    })
+  ),
 
-  //   new Webpack.optimize.CommonsChunkPlugin({
-  //     name: 'vendor',
-  //     chunks: ['main'],
-  //     minChunks: ({ resource }) => (
-  //       /node_modules/.test(resource)
-  //     )
-  //   })
-  // ],
-
-  extractTextPlugin: new ExtractTextPlugin({
-    filename: '[name]-[chunkhash:8].css',
-    disable: process.env.NODE_ENV === 'development',
-    allChunks: true
-  }),
 
   htmlPlugin: new HtmlPlugin({
-    chunksSortMode: (chunk1, chunk2) => {
-      const order = ['view', 'vendor', 'main']
-      const left = order.indexOf(chunk1.names[0])
-      const right = order.indexOf(chunk2.names[0])
-      return left - right
-    },
+    chunksSortMode: 'none',
     minify: { collapseWhitespace: true },
     template: join(paths.src, 'index.ejs'),
-    title: 'Store'
+    title: 'Admin'
   }),
 
-  moduleConcatenationPlugin: new Webpack.optimize.ModuleConcatenationPlugin()
+  miniCssExtractPlugin: new MiniCssExtractPlugin({
+    filename: '[name]-[chunkhash:8].css',
+    chunkFilename: '[id].[hash].css'
+  }),
+
+  sassLintPlugin: new SassLintPlugin({
+    configFile: join(paths.root, '.sass-lint.yml'),
+    glob: 'src/**/*.s?(a|c)ss',
+    ignorePlugins: [
+      'extract-text-webpack-plugin'
+    ]
+  })
 }
 
 module.exports = {
@@ -66,6 +59,22 @@ module.exports = {
     alias: Aliases(paths),
     modules: [resolve(__dirname), '..', 'node_modules'],
     extensions: ['.css', '.scss', '.js', '.json', '.jsx']
+  },
+
+  optimization: {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({})
+    ],
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles.css',
+          test: /\.s?css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
   },
 
   preLoader: {
@@ -95,27 +104,38 @@ module.exports = {
               browsers: ['last 2 versions']
             }
           }],
-          '@babel/stage-0',
           '@babel/preset-react',
           '@babel/preset-flow'
         ],
         plugins: [
           'react-hot-loader/babel',
-          '@babel/plugin-proposal-class-properties',
-          '@babel/plugin-proposal-optional-chaining',
-          '@babel/plugin-proposal-pipeline-operator',
+          ['@babel/plugin-proposal-class-properties', {
+            loose: false
+          }],
+          ['@babel/plugin-proposal-decorators', {
+            legacy: true }
+          ],
+          '@babel/plugin-proposal-function-bind',
+          ['@babel/plugin-proposal-optional-chaining', {
+            loose: false
+          }],
+          ['@babel/plugin-proposal-pipeline-operator', {
+            proposal: 'minimal'
+          }],
+          '@babel/plugin-syntax-dynamic-import',
           ['@babel/plugin-transform-runtime', {
             helpers: false,
-            polyfill: false,
             regenerator: true
           }],
           ['module-resolver', {
             root: ['./src/js'],
             alias: {
-              MasterPage: './src/js/structure',
-              Actions: './src/js/actions',
+              App: './src/js',
+              Helpers: './src/js/helpers',
+              MasterPage: './src/js/masterpage',
+              Modules: './src/js/modules',
               Reducers: './src/js/reducers',
-              RootRoute: './src/js/routes',
+              Routes: './src/js/routes',
               Store: './src/js/store'
             }
           }],
@@ -134,62 +154,30 @@ module.exports = {
     }
   },
 
-  cssLoader: {
-    test: /\.css$/,
-    // use: ['style-loader', 'css-loader']
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: 'css-loader'
-    })
-  },
-
   scssLoader: {
-    test: /\.scss$/,
-    exclude: /node_modules/,
-    // use: [{
-    //   loader: 'style-loader'
-    // },
-    // {
-    //   loader: 'css-loader',
-    //   options: {
-    //     importLoaders: 1,
-    //     localIdentName: '[local]-[hash:base64:5]',
-    //     minimize: true,
-    //     modules: true,
-    //     sourceMap: true
-    //   }
-    // },
-    // {
-    //   loader: 'sass-loader',
-    //   options: {
-    //     data: '@import "' + paths.importEach + '";',
-    //     sourceMap: true,
-    //     includePaths: [ resolve(paths.src) ]
-    //   }
-    // }]
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-            localIdentName: '[local]-[hash:base64:5]',
-            minimize: true,
-            modules: true,
-            sourceMap: true
-          }
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            data: '@import "' + paths.importEach + '";',
-            sourceMap: true,
-            includePaths: [ resolve(paths.src) ]
-          }
+    test: /\.s?css$/,
+    // exclude: /node_modules/,
+    use: [
+      devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+          localIdentName: '[local]-[hash:base64:5]',
+          minimize: true,
+          modules: true,
+          sourceMap: true
         }
-      ]
-    })
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          data: `@import "${paths.importEach}";`,
+          sourceMap: true,
+          includePaths: [ resolve(paths.src) ]
+        }
+      }
+    ]
   },
 
   fileLoader: {
@@ -218,9 +206,8 @@ module.exports = {
   },
 
   plugins: [
-    // ...pluginsList.commonChunkPlugin,
-    pluginsList.extractTextPlugin,
     pluginsList.htmlPlugin,
-    pluginsList.moduleConcatenationPlugin
+    pluginsList.miniCssExtractPlugin
+    // pluginsList.sassLintPlugin
   ]
 }
