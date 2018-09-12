@@ -2,7 +2,6 @@ const Config                  = require('./common.config');
 const Path                    = require('path');
 const Webpack                 = require('webpack');
 const HTMLWebpackPlugin       = require('html-webpack-plugin');
-const I18nPlugin              = require("i18n-webpack-plugin");
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 require("babel-core/register");
 require("babel-polyfill");
@@ -12,8 +11,8 @@ const languages = {
   'en-us': require('../languages/en-us.json'),
 };
 
-module.exports = Object.keys(languages).map(language => ({
-  name: language,
+module.exports = {
+  name: 'main',
   entry: {
     index: [
       'babel-polyfill',
@@ -21,7 +20,7 @@ module.exports = Object.keys(languages).map(language => ({
     ]
   },
   output: {
-    filename: `${language}.[name].js`,
+    filename: '[name].js',
     path    : Config.bundlePath
   },
   resolve: Config.resolve,
@@ -62,4 +61,4 @@ module.exports = Object.keys(languages).map(language => ({
     }),
     ...Config.plugins
   ]
-}));
+};
