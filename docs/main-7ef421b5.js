@@ -6393,11 +6393,11 @@ function MasterPage() {
 // EXTERNAL MODULE: ../node_modules/redux/es/redux.js
 var redux = __webpack_require__(4);
 
-// CONCATENATED MODULE: ./js/reducers/actions/ActionTypes.jsx
+// CONCATENATED MODULE: ./js/reducers/actions/ActionTypes.js
 var ADD_PRODUCT = 'ADD_PRODUCT';
 var DEL_PRODUCT = 'DEL_PRODUCT';
 
-// CONCATENATED MODULE: ./js/reducers/ProductsCart.jsx
+// CONCATENATED MODULE: ./js/reducers/ProductsCart.js
 
 var initialState = {
   productsList: []
@@ -6431,14 +6431,14 @@ var ProductsCart_ProductsCart = function ProductsCart() {
 };
 
 /* harmony default export */ var reducers_ProductsCart = (ProductsCart_ProductsCart);
-// CONCATENATED MODULE: ./js/reducers/index.jsx
+// CONCATENATED MODULE: ./js/reducers/index.js
 
 
 var Reducers = Object(redux["b" /* combineReducers */])({
   ProductsCart: reducers_ProductsCart
 });
 /* harmony default export */ var reducers = (Reducers);
-// CONCATENATED MODULE: ./js/store/index.jsx
+// CONCATENATED MODULE: ./js/store/index.js
 
 
 var Store = Object(redux["c" /* createStore */])(reducers);
@@ -6446,7 +6446,7 @@ var Store = Object(redux["c" /* createStore */])(reducers);
 // EXTERNAL MODULE: ./scss/_import-once.scss
 var _import_once = __webpack_require__(40);
 
-// CONCATENATED MODULE: ./js/index.js
+// CONCATENATED MODULE: ./js/index.jsx
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntryComponent", function() { return js_EntryComponent; });
 
 
