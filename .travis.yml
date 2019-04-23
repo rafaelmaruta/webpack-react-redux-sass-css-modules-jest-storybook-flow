@@ -15,3 +15,4 @@ install:
 script:
   - echo "skipping tests"
 local_dir: 'docs'
+target_branch: 'bumping-patch'
