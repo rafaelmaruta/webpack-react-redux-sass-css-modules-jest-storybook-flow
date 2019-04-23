@@ -7,6 +7,7 @@ deploy:
   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep_history: true
   local_dir: docs
+  target_branch: bumping-patch
   on:
     branch: master
 before_install:
