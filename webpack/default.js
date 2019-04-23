@@ -11,7 +11,7 @@ const Webpack = require('webpack')
 const devMode = process.env.NODE_ENV !== 'production'
 
 const paths = {
-  dist: join(__dirname, '..', 'build'),
+  dist: join(__dirname, '..', 'docs'),
   public: join(__dirname, '..', 'public'),
   root: join(__dirname, '..'),
   src: join(__dirname, '..', 'src'),
@@ -30,7 +30,7 @@ const pluginsList = {
     chunksSortMode: 'none',
     minify: { collapseWhitespace: true },
     template: join(paths.src, 'index.ejs'),
-    title: 'Nupay'
+    title: 'Admin'
   }),
 
   miniCssExtractPlugin: new MiniCssExtractPlugin({
