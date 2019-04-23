@@ -8,7 +8,9 @@
     "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --progress --config webpack/prod.config -p",
     "build:analyzer": "cross-env ANALYZER=TRUE yarn build",
     "lint": "cd src && standard --parser babel-eslint --verbose | snazzy",
-    "lint:watch": "gulp"
+    "lint:watch": "gulp",
+    "test": "jest src --no-cache --coverage",
+    "test:watch": "yarn test --watch"
   },
   "repository": {
     "type": "git"
@@ -101,6 +103,7 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "^.+\\.(s)?css$": "identity-obj-proxy"
     },
+    "setupTestFrameworkScriptFile": "./admin-core/setupTests.js",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }

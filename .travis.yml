@@ -12,3 +12,6 @@ before_install:
   - npm i -g pr-bumper@3.7.3 yarn@1.13.0
 install:
   - yarn
+script:
+  - echo "skipping tests"
+local_dir: 'docs'
