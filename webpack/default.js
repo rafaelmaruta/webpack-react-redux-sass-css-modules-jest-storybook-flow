@@ -30,7 +30,7 @@ const pluginsList = {
     chunksSortMode: 'none',
     minify: { collapseWhitespace: true },
     template: join(paths.src, 'index.ejs'),
-    title: 'Nupay'
+    title: 'Admin'
   }),
 
   miniCssExtractPlugin: new MiniCssExtractPlugin({
