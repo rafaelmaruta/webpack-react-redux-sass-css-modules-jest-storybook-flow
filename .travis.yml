@@ -15,4 +15,3 @@ install:
   - yarn
 script:
   - echo "skipping tests"
-target_branch: 'bumping-patch'
