@@ -1,0 +1,42 @@
+/* Styleguide */
+
+/* Colors */
+$error1: $red1;
+$error2: $red2;
+$error3: $red3;
+
+$warning1: $yellow1;
+$warning2: $yellow2;
+$warning3: $yellow3;
+
+$success1: $green1;
+$success2: $green2;
+$success3: $green3;
+
+/* Size */
+$default-border-radius: 3px;
+$default-small-height: 32px;
+$default-medium-height: 40px;
+$default-large-height: 48px;
+
+/* Spacing */
+$spacing-xxs: 8px;
+$spacing-xs: 16px;
+$spacing-s: 24px;
+$spacing-m: 40px;
+$spacing-l: 56px;
+$spacing-xl: 72px;
+$all-spacings: $spacing-xxs $spacing-xs $spacing-s $spacing-m $spacing-l $spacing-xl;
+$all-spacing-sufixes: xxs xs s m l xl;
+
+/* sizes */
+$gutter: $spacing-s;
+$header-height: $spacing-xl;
+$sidebar-expanded-width: 300px;
+$sidebar-reduced-width: $spacing-xl;
+
+/* Z Index */
+$z-index1: 10;
+$z-index2: 20;
+$z-index3: 30;
+$z-index4: 40;

@@ -1,0 +1,18 @@
+$fonts: (
+  "SourceSansPro/SourceSansPro-Regular",
+  "SourceSansPro/SourceSansPro-Bold",
+  "SourceSansPro/SourceSansPro-Semibold"
+);
+
+$source-sans-pro: nth($fonts, 1);
+$source-sans-pro-bold: nth($fonts, 2);
+$source-sans-pro-semibold: nth($fonts, 3);
+
+$font-family-default: $source-sans-pro;
+$font-family-bold: $source-sans-pro-bold;
+$font-family-semibold: $source-sans-pro-semibold;
+$font-size-default: $font-size2;
+$font-default: $font-size2 $font-family-default;
+
+$font-color: $black2;
+$link-color: $black2;
