@@ -1,0 +1,25 @@
+/* Put here your global styles */
+
+b, strong {
+	color: $font-color;
+	font-family: $font-family-bold;
+  }
+  
+  ul, ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  }
+  
+  a, body, p {
+	color: $font-color;
+  }
+  
+  body {
+	background-color: $light2;
+	font: $font-default;
+  }
+  
+  label {
+	font-size: $font-size-default;
+  }

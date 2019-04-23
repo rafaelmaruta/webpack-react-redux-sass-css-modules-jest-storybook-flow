@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "10.10.0"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
+before_install:
+  - npm i -g pr-bumper@3.7.3 yarn@1.13.0
+install:
+  - yarn
+script:
+  - echo "skipping tests"
+local_dir: 'docs'
+target_branch: 'bumping-patch'
